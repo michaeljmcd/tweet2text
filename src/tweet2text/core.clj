@@ -16,12 +16,18 @@
  "data")
 )
 
+; This technically works, but only if the thread was within the last 7 days.
+; See: https://developer.twitter.com/en/docs/twitter-api/tweets/search/introduction
+; Which says: "Soon, we plan to release a full-archive version which will make
+; the entire archive of public Tweets available. The recent and full-archive
+; search endpoints will share common design and features and are part of the
+; Search Tweets group of endpoints."
+
 (defn tweets-by-conversation-id [conversation-id]
-;(get
-; (json/read-str
-; (:body
- (http/get (-> config :api-url (str "tweets/search/recent")) 
-           {:headers {"Authorization" (str "Bearer " (:bearer-token config))} 
-            :query-params {"query" (str "conversation_id:" conversation-id) "tweet.fields" "conversation_id"}})
+;(get (json/read-str (:body
+ (http/get (-> config :api-url (str "tweets/search/recent")) {:headers
+  {"Authorization" (str "Bearer " (:bearer-token config))} :query-params
+  {"query" (str "conversation_id:" conversation-id) "tweet.fields"
+  "conversation_id"}})
 ; "data"))
 )
