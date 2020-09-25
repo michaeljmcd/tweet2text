@@ -1,0 +1,4 @@
+{
+    :bearer-token "YOUR_TOKEN"
+    :api-url "https://api.twitter.com/2/"
+}
